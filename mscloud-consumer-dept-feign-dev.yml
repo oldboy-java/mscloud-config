@@ -1,0 +1,43 @@
+feign:
+  hystrix:
+    enabled: true  #开启feign服务降级支持
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true  #设置超时时间
+
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+    concurrency:
+      execution:
+        timeout:
+          enabled: false  #设置超时时间
+
+        isolation:
+          thread:
+            timeoutInMilliseconds: 85000
+
+
+    DeptFeignClientService#get(Long):
+      execution:
+        timeout:
+          enabled: true  #设置超时时间
+
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+
+
+    mscloud-provider-dept-hystrix-8001:
+      execution:
+        timeout:
+          enabled: true  #设置超时时间
+
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000
